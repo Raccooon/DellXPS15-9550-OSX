@@ -12,10 +12,15 @@ Boot into the UEFI Shell from Clover and enter the command `memmap`. You'll get 
 use a hexadecimal calculator (like calc from mac in programmers mode on 16)
 
 ## Step 3: Add the number of pages till first suitable block
-you need a decent amount of pages to boot. Look in your memmap for the first Available block with enough pages.  
+you need a decent amount of pages to boot. Look in your memmap for the first Available block with enough pages.
+As show in the image, the first enough page is 12E98000.
 Each integer in slide will move the pointer 200000. It begins at 100000. So the calculation would be:  
 (TARGET - 100000) / 200000. 
+Use hex cal the result is 96.
 
 ## Step 4: Switch to Base 10 
-convert the number to Base10 (normal number). You can do this with the mac os calc by pressing the button with the 10 on it.  
+convert the number to Base10 (normal number). You can do this with the mac os calc by pressing the button with the 10 on it.
+
+We got the hex result is 96, so dec result is 150.
 This is your slide parameter. Enter it in your boot command (for example slide=160) and everything should work. If it doesn't then maybe your block doesn't have enough free pages and you have to select a bigger one.
+You can find the boot argument just at the clover boot, serval icon behind your os x, an icon named Options
